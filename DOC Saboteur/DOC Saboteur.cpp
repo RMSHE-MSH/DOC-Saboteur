@@ -26,9 +26,11 @@
 #include <random>
 #include <string>
 #include <windows.h>
-#include <stdexcept> // 用于std::runtime_error
+#include <stdexcept>
+#include <pugixml.hpp>
+#include <fstream>
+#include <sstream>
 #include "doc_operate.hpp"
-#include "doc_recover.hpp"
 
 operate op;
 
@@ -58,7 +60,7 @@ std::string randomBooleanAttribute() {
     return dist(mt) ? "true" : "false";
 }
 
-// 增强的随机化字体属性函数，用于修改XML内容。
+// 随机化字体属性函数，用于修改XML内容。
 std::string randomizeFontPropertiesEnhanced(const std::string &xmlContent) {
     pugi::xml_document doc;
     if (!doc.load_string(xmlContent.c_str())) return "";
@@ -114,13 +116,13 @@ int main() {
     try {
         std::vector<std::string> file_list = op.find_docx_files("./");
         for (auto iter = file_list.begin(); iter != file_list.end(); ++iter) {
-            if (op.copy_file(*iter, "C:/backup/" + *iter) == true) {
+            if (op.copy_file(*iter, "C:/doc_saboteur_backup/" + *iter) == true) {
                 std::filesystem::path _docxPath_ = op.renameIfChinese(*iter);
 
                 // 转换为 std::string
-                std::string docxPathString = _docxPath_.string(); // 或者 _docxPath_.u8string() 对于UTF-8编码的路径
+                std::string docxPathString = _docxPath_.string();
 
-                // 获取 const char* 类型
+                // 转换为 const char* 类型
                 const char *docxPath = docxPathString.c_str();
                 const char *docXmlPath = "word/document.xml";
 

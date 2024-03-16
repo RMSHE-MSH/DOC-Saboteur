@@ -6,33 +6,34 @@ DOC Saboteur 是一个有趣且实用的工具，专门设计用于随机化Word
 
 ## 功能
 
-- **格式随机化**：自动扫描程序根目录下的所有Word文档(`*.docx`)，并对每个文件的文本格式进行随机化处理，包括：
-  - 字体大小
-  - 字体颜色
-  - 字体加粗
-  - 字体倾斜
+- **格式属性随机化**：自动扫描程序根目录(或指定目录)下的所有Word文档(`*.docx`)，并对每个文件的文本格式进行随机化处理.
 - **文件处理**：
   - **不支持中文文件名**：程序将自动检测中文文件名并重命名为非中文字符串，以保证处理过程无误。
-  - **自动备份**：在进行任何修改前，自动将源文件备份到C盘的`backup`目录下，确保原数据安全。
+  - **自动备份**：在进行任何修改前，自动将源文件备份到C盘的`doc_saboteur_backup`目录下，确保原数据安全。
 
 ## 使用指南
 
-1. 将Word文档(`*.docx`)放入程序根目录下。
+1. 将Word文档(`*.docx`)放入程序根目录下(默认配置)。
 2. 运行DOC Saboteur程序。
 3. 程序会自动扫描根目录下的所有Word文档，并进行格式随机化处理。
 4. 处理完成后，可以在程序根目录下找到被修改的文档。
-5. 原始文件将被安全备份到C盘的`backup`目录下。
+5. 原始文件将被安全备份到C盘的`doc_saboteur_backup`目录下。
 
 ## 注意事项
 
-1. 确保C盘的`backup`目录存在且有足够的空间存储备份文件。
+1. 确保C盘的`doc_saboteur_backup`目录存在且有足够的空间存储备份文件。
 2. 程序目前不支持直接处理文件名为中文的文档，但会自动进行重命名处理。
 3. 在使用本程序时，请确保你有足够的权限访问和修改指定目录下的文件。
 
+## 代码编译环境
+**系统环境**: `Windows10-x64`; `Visual Studio 2022`; `C++17`; 
+
+**所需的库**: `Pugixml`; `libzip`; `zlib`;
+
 ## 黑暗面
-你只需修改两行代码就能使本程序变成一个非常恶意的程序.
-1. 修改main函数中的`std::vector<std::string> file_list = op.find_docx_files("./");`代码,`op.find_docx_files("./")`中的`"./"`表示程序根目录,你可以将其改为某个盘符,例如`C:/`,这样程序会遍历查找并破坏C盘下的所有的`*.docx`文件.
-1. 将`if (op.copy_file(*iter, "C:/backup/" + *iter) == true)`注释掉,这段代码的作用是把即将被破坏的文档备份到`C:/backup/`中,如果注释掉则程序不会备份文档,那么你的文档的破坏将不可逆.
+你只需修改`main()`函数中的两行代码就能使它变成一个非常恶意的程序.
+1. 修改`std::vector<std::string> file_list = op.find_docx_files("./");`代码,`op.find_docx_files("./")`中的`"./"`表示程序根目录,你可以将其改为某个盘符,例如`C:/`,这样程序会遍历查找并破坏C盘下的所有的`*.docx`文件.
+1. 将`if (op.copy_file(*iter, "C:/doc_saboteur_backup/" + *iter) == true)`注释掉,这行代码的作用是在破坏文档前将其备份到`C:/doc_saboteur_backup/`中,如果注释掉则程序不会备份文档,那么对您的文档的破坏将不可逆!!!
 
 ####  以下是一个示例:
 
@@ -46,7 +47,7 @@ int main() {
                 std::filesystem::path _docxPath_ = op.renameIfChinese(*iter);
 
                 // 转换为 std::string
-                std::string docxPathString = _docxPath_.string(); // 或者 _docxPath_.u8string() 对于UTF-8编码的路径
+                std::string docxPathString = _docxPath_.string();
 
                 // 获取 const char* 类型
                 const char *docxPath = docxPathString.c_str();

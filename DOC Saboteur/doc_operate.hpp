@@ -196,7 +196,7 @@ public:
             auto extension = path.extension();
 
             // 生成新的文件名（不包含扩展名）
-            std::string new_name = generateRandomString(8); // 例如，生成8个字符的随机字符串
+            std::string new_name = generateRandomString(10); // 例如，生成10个字符的随机字符串
             auto new_path = parent_path / (new_name + extension.string());
 
             // 重命名文件

@@ -3,6 +3,10 @@
 ###############################################################################
 * text=auto
 
+*.md linguist-language=Markdown
+README_en.md linguist-language=Markdown
+README_zh.md linguist-language=Markdown
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #

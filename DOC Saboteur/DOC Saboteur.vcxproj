@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DOC Saboteur.cpp" />
-    <ClCompile Include="doc_recover.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="doc_operate.hpp" />
