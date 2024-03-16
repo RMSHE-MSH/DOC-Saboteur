@@ -1,4 +1,10 @@
-# DOC Saboteur
+## Switch Language / 切换语言
+
+- [English](README_en.md)
+- [简体中文](README.md)
+---
+
+# DOC Saboteur (文档破坏者)
 
 ## 简介
 

@@ -1,3 +1,9 @@
+## 切换语言 / Switch Language
+
+- [简体中文](README.md)
+- [English](README_en.md)
+---
+
 # DOC Saboteur
 
 ## Introduction
