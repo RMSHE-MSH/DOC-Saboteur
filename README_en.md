@@ -32,9 +32,9 @@ DOC Saboteur is a fun and practical tool specifically designed for randomizing t
 3. When using this program, ensure you have sufficient permissions to access and modify files in the specified directory.
 
 ## Code Compilation Environment
-**System Environment**: `Windows10-x64`; `Visual Studio 2022`; `C++17`;
+- **System Environment**: `Windows10-x64`; `Visual Studio 2022`; `C++17`;
 
-**Required Libraries**: `Pugixml`; `libzip`; `zlib`;
+- **Required Libraries**: `Pugixml`; `libzip`; `zlib`;
 
 ## Dark Side
 You only need to modify two lines of code in the `main()` function to turn it into a very malicious program.

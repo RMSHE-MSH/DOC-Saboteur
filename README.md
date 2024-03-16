@@ -32,9 +32,9 @@ DOC Saboteur 是一个有趣且实用的工具，专门设计用于随机化Word
 3. 在使用本程序时，请确保你有足够的权限访问和修改指定目录下的文件。
 
 ## 代码编译环境
-**系统环境**: `Windows10-x64`; `Visual Studio 2022`; `C++17`; 
+- **系统环境**: `Windows10-x64`; `Visual Studio 2022`; `C++17`; 
 
-**所需的库**: `Pugixml`; `libzip`; `zlib`;
+- **所需的库**: `Pugixml`; `libzip`; `zlib`;
 
 ## 黑暗面
 你只需修改`main()`函数中的两行代码就能使它变成一个非常恶意的程序.
